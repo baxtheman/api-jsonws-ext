@@ -373,7 +373,7 @@ String signature = ParamUtil.getString(request, "signature");
 							<i class="icon-copy"></i>
 						</button>
 
-						<pre class="lfr-code-block" id="serviceOutput"></pre>
+						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceOutput"></pre>
 					</liferay-ui:section>
 
 					<liferay-ui:section>
@@ -381,7 +381,7 @@ String signature = ParamUtil.getString(request, "signature");
 							<i class="icon-copy"></i>
 						</button>
 
-						<pre class="lfr-code-block" id="jsExample"></pre>
+						<pre class="prettyprint lfr-code-block" id="jsExample"></pre>
 					</liferay-ui:section>
 
 					<liferay-ui:section>
@@ -398,6 +398,7 @@ String signature = ParamUtil.getString(request, "signature");
 		<aui:script use="aui-io,aui-template-deprecated,querystring-parse">
 
 			new ClipboardJS('.copy-clipboard');
+			PR.prettyPrint();
 
 			var REGEX_QUERY_STRING = new RegExp('([^?=&]+)(?:=([^&]*))?', 'g');
 
@@ -525,7 +526,7 @@ String signature = ParamUtil.getString(request, "signature");
 						'<%= jsonWebServiceActionMapping.getPath() %>',
 						formEl,
 						function(obj) {
-							serviceOutput.html(A.Lang.String.escapeHTML(JSON.stringify(obj, null, 2)));
+							serviceOutput.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(JSON.stringify(obj, null, 2))));
 
 							output.removeClass('loading-results');
 
