@@ -1,4 +1,6 @@
 Bundle-Description: Overrides core/kernel API JSONWS JSPs
 Bundle-SymbolicName: it.baxtheman.liferay.corejsphook
-Bundle-Version: 1.0.0
+Bundle-Version: 7.1.0.1
 -sources: true
+Web-ContextPath: /api-jsonws-ext
+Liferay-JS-Config:/META-INF/resources/js/config.js

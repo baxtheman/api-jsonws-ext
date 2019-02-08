@@ -5,10 +5,6 @@
 
 	<%@ include file="/html/portal/api/jsonws/css.jspf" %>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/run_prettify.min.js"></script>
-
 	<div id="wrapper">
 		<header id="banner" role="banner">
 			<div id="heading">

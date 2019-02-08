@@ -187,10 +187,9 @@ String signature = ParamUtil.getString(request, "signature");
 			</div>
 		</div>
 
-		<aui:script use="aui-io,aui-template-deprecated,querystring-parse">
+		<aui:script use="aui-io,aui-template-deprecated,querystring-parse,clipboard,run_prettify">
 
 			new ClipboardJS('.copy-clipboard');
-			PR.prettyPrint();
 
 			var REGEX_QUERY_STRING = new RegExp('([^?=&]+)(?:=([^&]*))?', 'g');
 
