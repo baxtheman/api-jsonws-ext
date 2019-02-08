@@ -1,0 +1,4 @@
+Bundle-Description: Overrides core/kernel API JSONWS JSPs
+Bundle-SymbolicName: it.baxtheman.liferay.corejsphook
+Bundle-Version: 1.0.0
+-sources: true

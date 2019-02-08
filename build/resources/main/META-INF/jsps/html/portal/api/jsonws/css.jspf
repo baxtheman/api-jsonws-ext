@@ -1,0 +1,271 @@
+
+body {
+	background: #EEF0F2 !important;
+	margin: 0 auto;
+	padding: 0 !important;
+}
+
+#wrapper {
+	margin: 0 auto !important;
+	min-width: 0;
+	width: 90%;
+}
+
+#banner {
+}
+
+#banner:after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+#header-content {
+	margin: 0 auto;
+	text-align: left;
+	width: 760px;
+}
+
+#footer {
+	clear: both;
+	padding-top: 2em;
+}
+
+h2, h3 {
+	color: #333;
+	font-size: 2em;
+	font-weight: bold;
+	margin: 0;
+}
+
+h3 {
+	font-size: 1.6em;
+	line-height: 1;
+	margin-bottom: 0.2em;
+}
+
+.panel-default {
+	color: black;
+	border: none;
+	background-color: transparent;
+}
+
+.panel-default .panel-heading {
+        font-weight: bold;
+}
+
+.panel-body {
+	padding: 0;
+}
+
+.loading-results {
+	background: url(<%= themeDisplay.getPathThemeImages() %>/aui/loading_indicator.gif) no-repeat 50%;
+	min-height: 2em;
+}
+
+.lfr-api-navigation-content {
+	padding: 0;
+}
+
+.lfr-api-navigation .lfr-panel-titlebar {
+	margin-bottom: 0;
+}
+
+.lfr-api-navigation .lfr-panel-title {
+	padding-left: 5px;
+	text-shadow: #FFF 1px 1px;
+}
+
+.lfr-api-navigation .lfr-panel-titlebar .lfr-panel-button {
+	display: none;
+}
+
+.lfr-api-navigation .lfr-panel-content {
+	background-color: #FFF;
+	padding: 5px 0;
+}
+
+.lfr-api-navigation .lfr-panel-content li a {
+	display: block;
+	padding: 3px 15px;
+}
+
+.lfr-api-navigation .lfr-panel-content li a:hover {
+	background-color: #EBF0F5;
+}
+
+.lfr-api-navigation .lfr-panel-content li.selected a {
+	background-color: #5B677D;
+	color: #FFF;
+	text-decoration: none;
+}
+
+.lfr-api-details-content {
+	padding-left: 25px;
+}
+
+.lfr-action-label {
+	color: #FFF;
+	margin: 0 0.5em;
+	padding: 0.1em 0.5em;
+}
+
+.lfr-api-signature {
+	font-size: 1.1em;
+	padding: 2px;
+}
+
+.lfr-api-signature:hover {
+	background-color: #F5F5F5;
+}
+
+.lfr-api-section {
+	padding-left: 25px;
+	position: relative;
+}
+
+.lfr-api-section h3, .lfr-api-section h2 {
+	background: none no-repeat 0 50%;
+	font-weight: bold;
+	margin-left: -25px;
+	padding-left: 25px;
+}
+
+.lfr-api-method h2 {
+	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/method.png);
+}
+
+.lfr-api-parameters h3 {
+	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/property.png);
+}
+
+.lfr-api-return-type h3 {
+	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/return_type.png);
+}
+
+.lfr-api-exception h3 {
+	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/exception.png);
+}
+
+.lfr-api-execute h3 {
+	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/execute.png);
+}
+
+.lfr-api-section {
+	margin-bottom: 1.5em;
+}
+
+.lfr-api-method .lfr-api-param-name {
+	color: #333;
+}
+
+.lfr-api-method .class-name {
+	color: #00A2EA;
+}
+
+.lfr-api-method .method-name {
+	color: #B00;
+}
+
+.lfr-api-http-method {
+	font-size: 1.1em;
+	font-weight: normal;
+	margin: 0;
+	right: 0;
+	top: -1.5em;
+}
+
+.lfr-api-http-method dt, .lfr-api-http-method dd {
+	display: inline-block;
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+.lfr-api-http-method dt {
+	color: #555;
+}
+
+.lfr-api-http-method dd {
+	background-color: #0A0;
+	font-size: 0.7em;
+	font-weight: bold;
+}
+
+.lfr-api-param {
+	padding: 0.5em 0;
+}
+
+.lfr-api-param-comment {
+	color: #444;
+	margin: 0 0 1em;
+}
+
+.lfr-api-param-name {
+	color: #003E73;
+	font-size: 1.2em;
+	font-weight: bold;
+	word-wrap: break-word;
+}
+
+.lfr-api-param-type {
+	color: #999;
+}
+
+.lfr-api-context .field-element, .lfr-api-context .field-content {
+	width: 100%;
+}
+
+.lfr-api-service-search .field-content {
+	margin-top: 2px;
+}
+
+.no-matches {
+	color: #999;
+	padding: 1em 0;
+}
+
+.yui3-highlight {
+	background-color: #C1D8F4;
+	font-weight: bold;
+}
+
+.lfr-api-results {
+	background-color: #EEE;
+}
+
+.lfr-code-block {
+	margin: 5px 0;
+	padding: 0 0.5em 1em;
+	background: #333;
+	color: #ccc;
+	min-height: 5em;
+}
+
+.field-content, .field-inline .field-content {
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.suffix {
+	color: #777;
+	display: block;
+	font-size: 0.9em;
+	font-style: italic;
+}
+
+.lfr-inline-code {
+	background: #FF9;
+	color: #555;
+	font-family: monospace;
+	font-size: 1.2em;
+	font-style: normal;
+	font-weight: bold;
+	padding: 3px;
+}
+
+.alert.alert-warning .lfr-inline-code {
+	background-color: #EEB;
+	color: #333;
+}
