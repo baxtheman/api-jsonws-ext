@@ -1,3 +1,4 @@
+<style>
 
 body {
 	background: #EEF0F2 !important;
@@ -58,6 +59,11 @@ h3 {
 
 .panel-body {
 	padding: 0;
+}
+
+.method-path {
+	font-family: monospace;
+	font-size: 2.3em;
 }
 
 .loading-results {
@@ -304,3 +310,5 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
   pre .atn, code .atn { color: #404 }
   pre .atv, code .atv { color: #060 }
 }
+
+</style>

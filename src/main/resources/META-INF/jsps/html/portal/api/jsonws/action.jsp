@@ -8,232 +8,24 @@ String signature = ParamUtil.getString(request, "signature");
 
 <c:choose>
 	<c:when test="<%= Validator.isNotNull(signature) %>">
-		<div class="lfr-api-method lfr-api-section">
 
-			<%
-			JSONWebServiceActionMapping jsonWebServiceActionMapping = JSONWebServiceActionsManagerUtil.getJSONWebServiceActionMapping(signature);
-			%>
+		<%
+		JSONWebServiceActionMapping jsonWebServiceActionMapping = JSONWebServiceActionsManagerUtil.getJSONWebServiceActionMapping(signature);
+		%>
 
-			<h2><%= jsonWebServiceActionMapping.getPath() %></h2>
+		<h2 class="method-path mb-3"><%= jsonWebServiceActionMapping.getPath() %></h2>
 
-			<dl class="lfr-api-http-method">
-				<dt>
-					<liferay-ui:message key="http-method" />
-				</dt>
-				<dd class="lfr-action-label">
-					<%= jsonWebServiceActionMapping.getMethod() %>
-				</dd>
-			</dl>
+		<p>
+			<a class="btn btn-default" data-toggle="collapse"
+				href="#collapseExample" role="button" aria-expanded="false"
+				aria-controls="collapseExample"> Read method details </a>
+		</p>
+		<div class="collapse" id="collapseExample">
+			<div class="card card-body">
 
-			<%
-			Class<?> actionClass = jsonWebServiceActionMapping.getActionClass();
+			<%@ include file="/html/portal/api/jsonws/details.jspf" %>
 
-			String actionClassName = actionClass.getName();
-
-			int pos = actionClassName.lastIndexOf(CharPool.PERIOD);
-
-			Method actionMethod = jsonWebServiceActionMapping.getActionMethod();
-			%>
-
-			<div class="lfr-api-param">
-				<span class="lfr-api-param-name">
-					<%= actionClassName.substring(0, pos) %>.<span class="class-name"><%= actionClassName.substring(pos + 1) %></span>
-				</span>
-
-				<%
-				Class<?> serviceClass = actionClass;
-
-				if (actionClassName.contains(".service.") && actionClassName.endsWith("ServiceUtil")) {
-					String implClassName = StringUtil.replace(actionClassName, new String[] {".service.", "ServiceUtil"}, new String[] {".service.impl.", "ServiceImpl"});
-
-					try {
-						serviceClass = JavadocUtil.loadClass(actionClass.getClassLoader(), implClassName);
-					}
-					catch (Exception e) {
-					}
-				}
-
-				JavadocClass javadocClass = JavadocManagerUtil.lookupJavadocClass(serviceClass);
-
-				String javadocClassComment = null;
-
-				if (javadocClass != null) {
-					javadocClassComment = javadocClass.getComment();
-				}
-				%>
-
-				<c:if test="<%= Validator.isNotNull(javadocClassComment) %>">
-					<p class="lfr-api-param-comment">
-						<%= javadocClassComment %>
-					</p>
-				</c:if>
 			</div>
-
-			<div class="lfr-api-param">
-				<span class="lfr-api-param-name">
-					<span class="method-name"><%= actionMethod.getName() %></span>
-				</span>
-
-				<%
-				JavadocMethod javadocMethod = JavadocManagerUtil.lookupJavadocMethod(actionMethod);
-
-				String javadocMethodComment = null;
-
-				if (javadocMethod != null) {
-					javadocMethodComment = javadocMethod.getComment();
-				}
-				%>
-
-				<c:if test="<%= Validator.isNotNull(javadocMethodComment) %>">
-					<p class="lfr-api-param-comment">
-						<%= javadocMethodComment %>
-					</p>
-				</c:if>
-			</div>
-		</div>
-
-		<div class="lfr-api-parameters lfr-api-section">
-			<h3><liferay-ui:message key="parameters" /></h3>
-
-			<%
-			if (PropsValues.JSON_SERVICE_AUTH_TOKEN_ENABLED) {
-			%>
-
-				<div class="lfr-api-param">
-					<span class="lfr-api-param-name">
-						p_auth
-					</span>
-					<span class="lfr-action-label lfr-api-param-type">
-						String
-					</span>
-
-					<p class="lfr-api-param-comment">
-						authentication token used to validate the request
-					</p>
-				</div>
-
-			<%
-			}
-
-			MethodParameter[] methodParameters = jsonWebServiceActionMapping.getMethodParameters();
-
-			for (int i = 0; i < methodParameters.length; i++) {
-				MethodParameter methodParameter = methodParameters[i];
-
-				Class<?> methodParameterTypeClass = methodParameter.getType();
-
-				String methodParameterTypeClassName = null;
-
-				if (methodParameterTypeClass.isArray()) {
-					methodParameterTypeClassName = methodParameterTypeClass.getComponentType() + "[]";
-				}
-				else {
-					methodParameterTypeClassName = methodParameterTypeClass.getName();
-				}
-			%>
-
-				<div class="lfr-api-param">
-					<span class="lfr-api-param-name">
-						<%= methodParameter.getName() %>
-					</span>
-					<span class="lfr-action-label lfr-api-param-type">
-						<%= methodParameterTypeClassName %>
-					</span>
-
-					<%
-					String parameterComment = null;
-
-					if (javadocMethod != null) {
-						parameterComment = javadocMethod.getParameterComment(i);
-					}
-					%>
-
-					<c:if test="<%= Validator.isNotNull(parameterComment) %>">
-						<p class="lfr-api-param-comment">
-							<%= parameterComment %>
-						</p>
-					</c:if>
-				</div>
-
-			<%
-			}
-			%>
-
-		</div>
-
-		<div class="lfr-api-return-type lfr-api-section">
-			<h3><liferay-ui:message key="return-type" /></h3>
-
-			<div class="lfr-api-param">
-
-				<%
-				Class<?> returnTypeClass = actionMethod.getReturnType();
-
-				String returnTypeName = StringPool.BLANK;
-
-				while (returnTypeClass.isArray()) {
-					returnTypeClass = returnTypeClass.getComponentType();
-
-					returnTypeName += "[]";
-				}
-
-				returnTypeName = returnTypeClass.getName() + returnTypeName;
-				%>
-
-				<span class="lfr-api-param-name">
-					<%= returnTypeName %>
-				</span>
-
-				<%
-				String returnComment = null;
-
-				if (javadocMethod != null) {
-					returnComment = javadocMethod.getReturnComment();
-				}
-				%>
-
-				<c:if test="<%= Validator.isNotNull(returnComment) %>">
-					<p class="lfr-api-param-comment">
-						<%= returnComment %>
-					</p>
-				</c:if>
-			</div>
-		</div>
-
-		<div class="lfr-api-exception lfr-api-section">
-			<h3><liferay-ui:message key="exception" /></h3>
-
-			<%
-			Class<?>[] exceptionTypeClasses = actionMethod.getExceptionTypes();
-
-			for (int i = 0; i < exceptionTypeClasses.length; i++) {
-				Class<?> exceptionTypeClass = exceptionTypeClasses[i];
-			%>
-
-				<div class="lfr-api-param">
-					<span class="lfr-api-param-name">
-						<%= exceptionTypeClass.getName() %>
-					</span>
-
-					<%
-					String throwsComment = null;
-
-					if (javadocMethod != null) {
-						throwsComment = javadocMethod.getThrowsComment(i);
-					}
-					%>
-
-					<c:if test="<%= Validator.isNotNull(throwsComment) %>">
-						<div class="lfr-api-param-comment">
-							<%= throwsComment %>
-						</div>
-					</c:if>
-				</div>
-
-			<%
-			}
-			%>
-
 		</div>
 
 		<div class="lfr-api-execute lfr-api-section">

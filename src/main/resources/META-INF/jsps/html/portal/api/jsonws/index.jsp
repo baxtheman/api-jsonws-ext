@@ -2,9 +2,8 @@
 <%@ include file="/html/portal/api/jsonws/init.jsp" %>
 
 <c:if test="<%= themeDisplay.getPermissionChecker().isOmniadmin() || PropsValues.JSONWS_WEB_SERVICE_API_DISCOVERABLE %>">
-	<style>
-		<%@ include file="/html/portal/api/jsonws/css.jspf" %>
-	</style>
+
+	<%@ include file="/html/portal/api/jsonws/css.jspf" %>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 
