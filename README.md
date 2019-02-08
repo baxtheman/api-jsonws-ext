@@ -8,6 +8,8 @@ Are you tired of the old api jsonws page? Take this new one.
 
 Tested on Liferay 7.1 CE
 
+[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.1/it.baxtheman.liferay.corejsphook-1.0.0.jar)
+
 ![Old to new](/doc/new.gif)
 
 
