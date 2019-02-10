@@ -5,6 +5,7 @@ Are you tired of the old api jsonws page? Take this new one.
 * Compact design, fluid layout, method details with accordion
 * JSON result sintax highlight
 * Fast clipboard copy
+* TODO: history for previous call parameters 
 
 Tested on Liferay 7.1 CE
 
@@ -12,7 +13,9 @@ Tested on Liferay 7.1 CE
 
 ![Old to new](/doc/new.gif)
 
+## Previous version
 
+It's still available the same plugin for Liferay 6.2 [here](https://github.com/baxtheman/mqtt-liferay-plugins/tree/master/base-services-portlet)
 
 License
 -------
