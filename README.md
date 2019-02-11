@@ -1,6 +1,6 @@
 # `/api/jsonws extender`
 
-Are you tired of the old api jsonws page? Take this new one.
+Are you tired of the old api jsonws page? Take this new one with some extra features:
 
 * Compact design, fluid layout, method details with accordion
 * JSON result sintax highlight
@@ -12,6 +12,11 @@ Tested on Liferay 7.1 CE
 [Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.2/it.baxtheman.liferay.apijsonwsext-7.1.0.2.jar)
 
 ![Old to new](/doc/new.gif)
+
+## Roadmap
+
+* Fast switch to change `com.liferay.portal.jsonwebservice` package log level 
+* Extend the history feature to save several call params
 
 ## Previous version
 
