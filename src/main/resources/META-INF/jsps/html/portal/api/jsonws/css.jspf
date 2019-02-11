@@ -140,23 +140,18 @@ h3 {
 }
 
 .lfr-api-method h2 {
-	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/method.png);
 }
 
 .lfr-api-parameters h3 {
-	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/property.png);
 }
 
 .lfr-api-return-type h3 {
-	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/return_type.png);
 }
 
 .lfr-api-exception h3 {
-	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/exception.png);
 }
 
 .lfr-api-execute h3 {
-	background-image: url(<%= themeDisplay.getPathThemeImages() %>/api/execute.png);
 }
 
 .lfr-api-section {

@@ -56,6 +56,8 @@ String signature = ParamUtil.getString(request, "signature");
 
 			<aui:form action="<%= jsonWSPath + jsonWebServiceActionMapping.getPath() %>" enctype="<%= enctype %>" method="<%= jsonWebServiceActionMapping.getMethod() %>" name="execute">
 
+				<aui:button id="previous-call-data" type="button" value="Previous call data" cssClass="hide" />
+
 				<%
 				if (PropsValues.JSON_SERVICE_AUTH_TOKEN_ENABLED) {
 				%>
@@ -128,7 +130,7 @@ String signature = ParamUtil.getString(request, "signature");
 					}
 					%>
 
-					<aui:script>
+					<aui:script use="local-storage-fallback">
 
 						<%
 						String jsObjectType = "other";
@@ -145,6 +147,31 @@ String signature = ParamUtil.getString(request, "signature");
 						%>
 
 						Liferay.TPL_DATA_TYPES['<%= jsObjectType %>']['<%= methodParameterName %>'] = true;
+
+						// local storage
+
+						Liferay.LOCAL_STORAGE_ACTION_NAME = 'APIJSONWS' + '<%= jsonWebServiceActionMapping.getPath() %>';
+						var actionstorage = localStorageFallback.getItem(Liferay.LOCAL_STORAGE_ACTION_NAME);
+
+						if (actionstorage) {
+
+						    var scriptData = JSON.parse(actionstorage);
+
+						    var prevBtn = A.one('#previous-call-data');
+						    prevBtn.show();
+						    prevBtn.on('click', function() {
+
+						        var form = A.one('#execute');
+
+						        A.Array.forEach(scriptData, function(entry, index) {
+
+						            var input = form.one('input[name=' + entry.key + ']');
+						            if (input) {
+						            	input.val(entry.value);
+						            }
+						        });
+						    });
+						}
 
 					</aui:script>
 
@@ -187,7 +214,7 @@ String signature = ParamUtil.getString(request, "signature");
 			</div>
 		</div>
 
-		<aui:script use="aui-io,aui-template-deprecated,querystring-parse,clipboard,run_prettify">
+		<aui:script use="aui-io,aui-template-deprecated,querystring-parse,clipboard,run_prettify,local-storage-fallback">
 
 			new ClipboardJS('.copy-clipboard');
 
@@ -416,6 +443,11 @@ String signature = ParamUtil.getString(request, "signature");
 					urlTpl.render(urlTplData, urlExample);
 
 					serviceResults.show();
+
+					// save parameters to local storage
+
+					localStorageFallback.setItem(Liferay.LOCAL_STORAGE_ACTION_NAME,
+					        JSON.stringify(scriptData));
 				}
 			);
 		</aui:script>
