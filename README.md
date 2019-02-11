@@ -5,11 +5,11 @@ Are you tired of the old api jsonws page? Take this new one.
 * Compact design, fluid layout, method details with accordion
 * JSON result sintax highlight
 * Fast clipboard copy
-* TODO: history for previous call parameters 
+* Recall for previous call parameters (using local storage)
 
 Tested on Liferay 7.1 CE
 
-[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.1/it.baxtheman.liferay.apijsonwsext-7.1.0.1.jar)
+[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.2/it.baxtheman.liferay.apijsonwsext-7.1.0.2.jar)
 
 ![Old to new](/doc/new.gif)
 
