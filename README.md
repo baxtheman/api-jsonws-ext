@@ -19,9 +19,9 @@ It's still available the same plugin for Liferay 6.2 [here](https://github.com/b
 
 ## Credits
 
-[Clipboard.js by Zeno](https://github.com/zenorocha/clipboard.js/) (Why it's not bundled in AlloyUI?)
-[JavaScript code prettifier](https://github.com/google/code-prettify)
-[local-storage-fallback](https://www.npmjs.com/package/local-storage-fallback)
+* [Clipboard.js by Zeno](https://github.com/zenorocha/clipboard.js/) (Why it's not bundled in AlloyUI?)
+* [JavaScript code prettifier](https://github.com/google/code-prettify)
+* [local-storage-fallback](https://www.npmjs.com/package/local-storage-fallback)
 
 License
 -------
