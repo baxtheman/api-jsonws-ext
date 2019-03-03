@@ -8,6 +8,7 @@ body {
 
 #wrapper {
 	margin: 0 auto !important;
+	padding: 0 !important;
 	min-width: 0;
 	width: 90%;
 }

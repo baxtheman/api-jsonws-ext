@@ -1,6 +1,6 @@
 Bundle-Description: Overrides core/kernel API JSONWS JSPs
 Bundle-SymbolicName: it.baxtheman.liferay.apijsonwsext
-Bundle-Version: 7.1.0.2
+Bundle-Version: 7.1.0.3
 -sources: true
 Web-ContextPath: /api-jsonws-ext
 Liferay-JS-Config:/META-INF/resources/js/config.js
