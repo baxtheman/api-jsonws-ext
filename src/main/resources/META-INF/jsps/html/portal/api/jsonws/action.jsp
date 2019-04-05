@@ -366,7 +366,7 @@ String signature = ParamUtil.getString(request, "signature");
 							location.hash = '#serviceResults';
 
 							A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
-							A.one('span.response-size').text(jsonsize + ' chars lenght');
+							A.one('span.response-size').text(jsonsize + ' chars length');
 						}
 					);
 
