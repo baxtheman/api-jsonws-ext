@@ -188,9 +188,13 @@ String signature = ParamUtil.getString(request, "signature");
 					refresh="<%= false %>"
 				>
 					<liferay-ui:section>
+						<div>
 						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceOutput">
 							<i class="icon-copy"></i>
 						</button>
+						<span class="time-elapsed badge badge-info"></span>
+						<span class="response-size badge badge-info"></span>
+						</div>
 
 						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceOutput"></pre>
 					</liferay-ui:section>
@@ -340,15 +344,29 @@ String signature = ParamUtil.getString(request, "signature");
 
 					formEl = form.getDOM();
 
+					var startTime, endTime;
+					startTime = new Date();
+
 					Liferay.Service(
 						'<%= jsonWebServiceActionMapping.getPath() %>',
 						formEl,
 						function(obj) {
-							serviceOutput.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(JSON.stringify(obj, null, 2))));
+
+						    endTime = new Date();
+						    var timeDiff = endTime - startTime;
+						    var milliseconds = Math.round(timeDiff);
+
+						    var jsontext = JSON.stringify(obj, null, 2);
+						    var jsonsize = jsontext.length;
+
+							serviceOutput.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(jsontext)));
 
 							output.removeClass('loading-results');
 
 							location.hash = '#serviceResults';
+
+							A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
+							A.one('span.response-size').text(jsonsize + ' chars lenght');
 						}
 					);
 

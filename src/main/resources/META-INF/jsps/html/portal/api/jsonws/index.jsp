@@ -35,7 +35,7 @@
 		</div>
 
 		<footer>
-			<liferay-ui:message key="powered-by" /> <a href="https://twitter.com/baxtheman" rel="external">Liferay & @baxtheman</a>
+			<liferay-ui:message key="powered-by" /> <a href="https://twitter.com/baxtheman" rel="external">Liferay & @baxtheman (ver 7.1.0.4)</a>
 		</footer>
 	</div>
 </c:if>

@@ -6,16 +6,17 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 * JSON result sintax highlight
 * Fast clipboard copy
 * Recall for previous call parameters (using local storage)
+* Print call elapsed time and response chars size
 
 Tested on Liferay 7.1 CE
 
-[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.2/it.baxtheman.liferay.apijsonwsext-7.1.0.2.jar)
+[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.4/it.baxtheman.liferay.apijsonwsext-7.1.0.4.jar)
 
 ![Old to new](/doc/new.gif)
 
 ## Roadmap
 
-* Fast switch to change `com.liferay.portal.jsonwebservice` package log level 
+* Fast switch to change `com.liferay.portal.jsonwebservice` package log level
 * Extend the history feature to save several call params
 
 ## Previous version

@@ -67,6 +67,10 @@ h3 {
 	font-size: 2.3em;
 }
 
+.badge {
+	font-size: 0.9em;
+}
+
 .loading-results {
 	background: url(<%= themeDisplay.getPathThemeImages() %>/aui/loading_indicator.gif) no-repeat 50%;
 	min-height: 2em;
