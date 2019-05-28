@@ -7,21 +7,28 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 * Fast clipboard copy
 * Recall for previous call parameters (using local storage)
 * Print call elapsed time and response chars size
+* View current user (logged or guest)
+* View Liferay.Service results from success or error callback function
+* 'Javascript Example' page with the complete schema
 
 Tested on Liferay 7.1 CE
 
 [Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.5/it.baxtheman.liferay.apijsonwsext-7.1.0.5.jar)
 
 See the old page and the new one:
+
 ![Old to new](/doc/new.gif)
 
 View current user (logged or guest)
+
 ![user](/doc/user.jpg)
 
 View Liferay.Service results from success or error callback function.
+
 ![success error](/doc/success-error.jpg)
 
 'Javascript Example' page with the complete schema
+
 ![api](/doc/api-sample.jpg)
 
 ## Roadmap
