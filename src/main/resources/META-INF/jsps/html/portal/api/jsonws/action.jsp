@@ -1,5 +1,3 @@
-
-
 <%@ include file="/html/portal/api/jsonws/init.jsp" %>
 
 <%
@@ -16,20 +14,21 @@ String signature = ParamUtil.getString(request, "signature");
 		<h2 class="method-path mb-3"><%= jsonWebServiceActionMapping.getPath() %></h2>
 
 		<p>
-			<a class="btn btn-default" data-toggle="collapse"
-				href="#collapseExample" role="button" aria-expanded="false"
+			<a class="btn btn-default" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
 				aria-controls="collapseExample"> Read method details </a>
 		</p>
 		<div class="collapse" id="collapseExample">
 			<div class="card card-body">
 
-			<%@ include file="/html/portal/api/jsonws/details.jspf" %>
+				<%@ include file="/html/portal/api/jsonws/details.jspf" %>
 
 			</div>
 		</div>
 
 		<div class="lfr-api-execute lfr-api-section">
-			<h3><liferay-ui:message key="execute" /></h3>
+			<h3>
+				<liferay-ui:message key="execute" />
+			</h3>
 
 			<%
 			String enctype = StringPool.BLANK;
@@ -47,14 +46,15 @@ String signature = ParamUtil.getString(request, "signature");
 
 			<aui:script>
 				Liferay.TPL_DATA_TYPES = {
-					array: {},
-					file: {},
-					other: {},
-					string: {}
+				array: {},
+				file: {},
+				other: {},
+				string: {}
 				};
 			</aui:script>
 
-			<aui:form action="<%= jsonWSPath + jsonWebServiceActionMapping.getPath() %>" enctype="<%= enctype %>" method="<%= jsonWebServiceActionMapping.getMethod() %>" name="execute">
+			<aui:form action="<%= jsonWSPath + jsonWebServiceActionMapping.getPath() %>" enctype="<%= enctype %>"
+				method="<%= jsonWebServiceActionMapping.getMethod() %>" name="execute">
 
 				<aui:button id="previous-call-data" type="button" value="Previous call data" cssClass="hide" />
 
@@ -62,7 +62,8 @@ String signature = ParamUtil.getString(request, "signature");
 				if (PropsValues.JSON_SERVICE_AUTH_TOKEN_ENABLED) {
 				%>
 
-					<aui:input id='<%= "field" + methodParameters.length %>' label="p_auth" name="p_auth" readonly="true" suffix="String" value="<%= AuthTokenUtil.getToken(request) %>" />
+				<aui:input id='<%= "field" + methodParameters.length %>' label="p_auth" name="p_auth" readonly="true"
+					suffix="String" value="<%= AuthTokenUtil.getToken(request) %>" />
 
 				<%
 				}
@@ -90,22 +91,25 @@ String signature = ParamUtil.getString(request, "signature");
 					if (methodParameterTypeClass.equals(File.class)) {
 				%>
 
-						<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= methodParameterName %>" suffix="<%= methodParameterTypeClassName %>" type="file" />
+				<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= methodParameterName %>"
+					suffix="<%= methodParameterTypeClassName %>" type="file" />
 
-					<%
+				<%
 					}
 					else if (methodParameterTypeClass.equals(boolean.class) || methodParameterTypeClass.equals(Boolean.class)) {
 					%>
 
-						<aui:field-wrapper label="<%= methodParameterName %>">
-							<aui:input checked="<%= true %>" id='<%= "fieldTrue" + i %>' inlineField="<%= true %>" label="<%= Boolean.TRUE.toString() %>" name="<%= methodParameterName %>" type="radio" value="<%= true %>" />
+				<aui:field-wrapper label="<%= methodParameterName %>">
+					<aui:input checked="<%= true %>" id='<%= "fieldTrue" + i %>' inlineField="<%= true %>"
+						label="<%= Boolean.TRUE.toString() %>" name="<%= methodParameterName %>" type="radio" value="<%= true %>" />
 
-							<aui:input id='<%= "fieldFalse" + i %>' inlineField="<%= true %>" label="<%= Boolean.FALSE.toString() %>" name="<%= methodParameterName %>" type="radio" value="<%= false %>" />
+					<aui:input id='<%= "fieldFalse" + i %>' inlineField="<%= true %>" label="<%= Boolean.FALSE.toString() %>"
+						name="<%= methodParameterName %>" type="radio" value="<%= false %>" />
 
-							<span class="suffix"><%= methodParameterTypeClassName %></span>
-						</aui:field-wrapper>
+					<span class="suffix"><%= methodParameterTypeClassName %></span>
+				</aui:field-wrapper>
 
-					<%
+				<%
 					}
 					else if (methodParameterTypeClass.isArray() || methodParameterTypeClass.isEnum() || methodParameterTypeClass.isPrimitive() || methodParameterTypeClass.equals(Byte.class) || methodParameterTypeClass.equals(Character.class) || methodParameterTypeClass.equals(Date.class) || methodParameterTypeClass.equals(Double.class) || methodParameterTypeClass.equals(Float.class) || methodParameterTypeClass.equals(Integer.class) || methodParameterTypeClass.equals(List.class) || methodParameterTypeClass.equals(Locale.class) || methodParameterTypeClass.equals(Long.class) || methodParameterTypeClass.equals(Map.class) || methodParameterTypeClass.equals(Short.class) || methodParameterTypeClass.equals(String.class) || methodParameterTypeClass.equals(Void.class)) {
 						int size = 10;
@@ -115,24 +119,26 @@ String signature = ParamUtil.getString(request, "signature");
 						}
 					%>
 
-						<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= methodParameterName %>" size="<%= size %>" suffix="<%= methodParameterTypeClassName %>" />
+				<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= methodParameterName %>"
+					size="<%= size %>" suffix="<%= methodParameterTypeClassName %>" />
 
-					<%
+				<%
 					}
 					else {
 						String objectMethodParameterName = "+" + methodParameterName;
 						int size = 10;
 					%>
 
-						<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= objectMethodParameterName %>" size="<%= size %>" suffix="<%= methodParameterTypeClassName %>" />
+				<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= objectMethodParameterName %>"
+					size="<%= size %>" suffix="<%= methodParameterTypeClassName %>" />
 
-					<%
+				<%
 					}
 					%>
 
-					<aui:script use="local-storage-fallback">
+				<aui:script use="local-storage-fallback">
 
-						<%
+					<%
 						String jsObjectType = "other";
 
 						if (methodParameterTypeClass.isArray()) {
@@ -146,34 +152,34 @@ String signature = ParamUtil.getString(request, "signature");
 						}
 						%>
 
-						Liferay.TPL_DATA_TYPES['<%= jsObjectType %>']['<%= methodParameterName %>'] = true;
+					Liferay.TPL_DATA_TYPES['<%= jsObjectType %>']['<%= methodParameterName %>'] = true;
 
-						// local storage
+					// local storage
 
-						Liferay.LOCAL_STORAGE_ACTION_NAME = 'APIJSONWS' + '<%= jsonWebServiceActionMapping.getPath() %>';
-						var actionstorage = localStorageFallback.getItem(Liferay.LOCAL_STORAGE_ACTION_NAME);
+					Liferay.LOCAL_STORAGE_ACTION_NAME = 'APIJSONWS' + '<%= jsonWebServiceActionMapping.getPath() %>';
+					var actionstorage = localStorageFallback.getItem(Liferay.LOCAL_STORAGE_ACTION_NAME);
 
-						if (actionstorage) {
+					if (actionstorage) {
 
-						    var scriptData = JSON.parse(actionstorage);
+					var scriptData = JSON.parse(actionstorage);
 
-						    var prevBtn = A.one('#previous-call-data');
-						    prevBtn.show();
-						    prevBtn.on('click', function() {
+					var prevBtn = A.one('#previous-call-data');
+					prevBtn.show();
+					prevBtn.on('click', function() {
 
-						        var form = A.one('#execute');
+					var form = A.one('#execute');
 
-						        A.Array.forEach(scriptData, function(entry, index) {
+					A.Array.forEach(scriptData, function(entry, index) {
 
-						            var input = form.one('input[name=' + entry.key + ']');
-						            if (input) {
-						            	input.val(entry.value);
-						            }
-						        });
-						    });
-						}
+					var input = form.one('input[name=' + entry.key + ']');
+					if (input) {
+					input.val(entry.value);
+					}
+					});
+					});
+					}
 
-					</aui:script>
+				</aui:script>
 
 				<%
 				}
@@ -183,31 +189,31 @@ String signature = ParamUtil.getString(request, "signature");
 			</aui:form>
 
 			<div class="hide mt-3 lfr-api-results" id="serviceResults">
-				<liferay-ui:tabs
-					names="result,javascript-example,curl-example,url-example"
-					refresh="<%= false %>"
-				>
+				<liferay-ui:tabs names="result,javascript-example,curl-example,url-example" refresh="<%= false %>">
 					<liferay-ui:section>
 						<div>
-						<span class="time-elapsed badge badge-info"></span>
-						<span class="response-size badge badge-info"></span>
+							<span class="time-elapsed badge badge-info"></span>
+							<span class="response-size badge badge-info"></span>
 						</div>
 
 						<div class="font-weight-bold">success callback</div>
-						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceOutput">
+						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard"
+							data-clipboard-target="#serviceOutput">
 							<i class="icon-copy"></i>
 						</button>
 						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceOutput"></pre>
 
 						<div class="font-italic">error callback</div>
-						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceError">
+						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard"
+							data-clipboard-target="#serviceError">
 							<i class="icon-copy"></i>
 						</button>
 						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceError"></pre>
 					</liferay-ui:section>
 
 					<liferay-ui:section>
-						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#jsExample">
+						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard"
+							data-clipboard-target="#jsExample">
 							<i class="icon-copy"></i>
 						</button>
 
@@ -247,47 +253,47 @@ String signature = ParamUtil.getString(request, "signature");
 			var stringType = tplDataTypes.string;
 
 			var formatDataType = function(key, value, includeNull) {
-				value = decodeURIComponent(value.replace(/\+/g, ' '));
-				value = escape(value);
+			value = decodeURIComponent(value.replace(/\+/g, ' '));
+			value = escape(value);
 
-				if (fileType[key]) {
-					value = 'null';
-				}
-				else if (stringType[key]) {
-					value = '\'' + value + '\'';
-				}
-				else if (arrayType[key]) {
-					if (!value && includeNull) {
-						value = 'null';
-					}
-					else if (value) {
-						value = '[' + value + ']';
-					}
-				}
+			if (fileType[key]) {
+			value = 'null';
+			}
+			else if (stringType[key]) {
+			value = '\'' + value + '\'';
+			}
+			else if (arrayType[key]) {
+			if (!value && includeNull) {
+			value = 'null';
+			}
+			else if (value) {
+			value = '[' + value + ']';
+			}
+			}
 
-				return value;
+			return value;
 			};
 
 			var formatCurlDataType = function(key, value, includeNull) {
-				var filePath = fileType[key];
+			var filePath = fileType[key];
 
-				if (!multipart || !filePath) {
-					value = formatDataType(key, value, includeNull);
-				}
-				else {
-					value = '@path_to_file';
-				}
+			if (!multipart || !filePath) {
+			value = formatDataType(key, value, includeNull);
+			}
+			else {
+			value = '@path_to_file';
+			}
 
-				return value;
+			return value;
 			};
 
 			curlTpl.formatDataType = formatCurlDataType;
 			scriptTpl.formatDataType = A.rbind(formatDataType, scriptTpl, true);
 
 			urlTpl.toURIParam = function(value) {
-				value = A.Lang.String.uncamelize(value, '-');
+			value = A.Lang.String.uncamelize(value, '-');
 
-				return value.toLowerCase();
+			return value.toLowerCase();
 			};
 
 			var curlExample = A.one('#curlExample');
@@ -299,197 +305,188 @@ String signature = ParamUtil.getString(request, "signature");
 			var serviceResults = A.one('#serviceResults');
 
 			form.on(
-				'submit',
-				function(event) {
-					event.halt();
+			'submit',
+			function(event) {
+			event.halt();
 
-					var output = A.all([curlExample, jsExample, urlExample, serviceOutput]);
+			var output = A.all([curlExample, jsExample, urlExample, serviceOutput]);
 
-					output.empty().addClass('loading-results');
+			output.empty().addClass('loading-results');
 
-					var formEl = form.getDOM();
+			var formEl = form.getDOM();
 
-					var formQueryString = A.IO.prototype._serialize(formEl);
+			var formQueryString = A.IO.prototype._serialize(formEl);
 
-					var query_elements = formQueryString.split("&");
+			var query_elements = formQueryString.split("&");
 
-					var PLUS_ENCODING = "%2B";
-					var MINUS_ENCODING = "%2D";
+			var PLUS_ENCODING = "%2B";
+			var MINUS_ENCODING = "%2D";
 
-					for (var i = 0 ; i < query_elements.length ; i++) {
-						var query_map = query_elements[i].split("=");
+			for (var i = 0 ; i < query_elements.length ; i++) { var query_map=query_elements[i].split("=");
 
 						var key = query_map[0];
 
-						var plus_bool = ((key.indexOf(PLUS_ENCODING) == 0) || (key.indexOf("+") == 0));
-						var minus_bool = ((key.indexOf(MINUS_ENCODING) == 0) || (key.indexOf("-") == 0));
+						var plus_bool = ((key.indexOf(PLUS_ENCODING) == 0) || (key.indexOf(" +")==0)); var
+				minus_bool=((key.indexOf(MINUS_ENCODING)==0) || (key.indexOf("-")==0)); if (plus_bool || minus_bool) { var
+				value="" ; for (var j=1; j < query_map.length ; j++) { value +=query_map[j]; } if (value.length> 0) {
+				if (minus_bool) {
+				key = key.replace(MINUS_ENCODING,"-");
+				var node = A.one('[name=' + key + ']');
 
-						if (plus_bool || minus_bool) {
-							var value = "";
-
-							for (var j = 1; j < query_map.length ; j++) {
-								value += query_map[j];
-							}
-
-							if (value.length > 0) {
-								if (minus_bool) {
-									key = key.replace(MINUS_ENCODING,"-");
-									var node = A.one('[name=' + key + ']');
-
-									key = key.replace("-", "+");
-									node.attr("name", key);
-								}
-							}
-							else if (plus_bool) {
-								key = key.replace(PLUS_ENCODING,"+");
-								var node = A.one('[name=' + key + ']');
-
-								key = key.replace("+", "-");
-								node.attr("name", key);
-							}
-						}
-					}
-
-					formEl = form.getDOM();
-
-					var startTime, endTime;
-					startTime = new Date();
-
-					var _callback = function(obj,err) {
-
-						serviceOutput.text('');
-						serviceError.text('');
-
-					    endTime = new Date();
-					    var timeDiff = endTime - startTime;
-					    var milliseconds = Math.round(timeDiff);
-
-					    var jsontext = JSON.stringify(obj, null, 2);
-					    var jsonsize = jsontext.length;
-
-					    var output = (!err) ? serviceOutput : serviceError;
-
-					    output.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(jsontext)));
-
-						output.removeClass('loading-results');
-
-						location.hash = '#serviceResults';
-
-						A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
-						A.one('span.response-size').text(jsonsize + ' chars lenght');
-					}
-
-					Liferay.Service(
-						'<%= jsonWebServiceActionMapping.getPath() %>',
-						formEl,
-						function(obj) {
-
-							_callback(obj);
-						},
-						function(err,obj) {
-
-							_callback(obj,err);
-						}
-					);
-
-					formQueryString = A.IO.prototype._serialize(formEl);
-
-					formQueryString = formQueryString.replace(PLUS_ENCODING, "+");
-					formQueryString = formQueryString.replace(MINUS_ENCODING, "-");
-
-					if (multipart) {
-						formQueryString += Object.keys(tplDataTypes.file).map(
-							function(item, index) {
-								return '&' + item + '=';
-							}
-						).join('');
-					}
-
-					var curlData = [];
-					var scriptData = [];
-
-					var ignoreFields = {
-						formDate: true,
-						p_auth: true
-					};
-
-					formQueryString.replace(
-						REGEX_QUERY_STRING,
-						function(match, key, value) {
-							if (!ignoreFields[key]) {
-								curlData.push(
-									{
-										key: key,
-										value: value
-									}
-								);
-
-								scriptData.push(
-									{
-										key: key,
-										value: value
-									}
-								);
-							}
-						}
-					);
-
-					var tplCurlData = {
-						data: curlData,
-						flag: multipart ? 'F' : 'd'
-					};
-
-					var tplScriptData = {
-						data: scriptData
-					};
-
-					curlTpl.render(tplCurlData, curlExample);
-					scriptTpl.render(tplScriptData, jsExample);
-
-					var urlTplData = {
-						data: [],
-						extraData: []
-					};
-
-					var extraFields = {
-						p_auth: true
-					};
-
-					formQueryString.replace(
-						REGEX_QUERY_STRING,
-						function(match, key, value) {
-							if (!ignoreFields[key]) {
-								if (extraFields[key]) {
-									urlTplData.extraData.push(
-										{
-											key: key,
-											value: value
-										}
-									);
-								}
-								else {
-									urlTplData.data.push(
-										{
-											key: key,
-											value: value
-										}
-									);
-
-								}
-							}
-						}
-					);
-
-					urlTpl.render(urlTplData, urlExample);
-
-					serviceResults.show();
-
-					// save parameters to local storage
-
-					localStorageFallback.setItem(Liferay.LOCAL_STORAGE_ACTION_NAME,
-					        JSON.stringify(scriptData));
+				key = key.replace("-", "+");
+				node.attr("name", key);
 				}
-			);
+				}
+				else if (plus_bool) {
+				key = key.replace(PLUS_ENCODING,"+");
+				var node = A.one('[name=' + key + ']');
+
+				key = key.replace("+", "-");
+				node.attr("name", key);
+				}
+				}
+				}
+
+				formEl = form.getDOM();
+
+				var startTime, endTime;
+				startTime = new Date();
+
+				var _callback = function(obj,err) {
+
+				serviceOutput.text('');
+				serviceError.text('');
+
+				endTime = new Date();
+				var timeDiff = endTime - startTime;
+				var milliseconds = Math.round(timeDiff);
+
+				var jsontext = JSON.stringify(obj, null, 2);
+				var jsonsize = jsontext.length;
+
+				var output = (!err) ? serviceOutput : serviceError;
+
+				output.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(jsontext)));
+
+				output.removeClass('loading-results');
+
+				location.hash = '#serviceResults';
+
+				A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
+				A.one('span.response-size').text(jsonsize + ' chars lenght');
+				}
+
+				Liferay.Service(
+				'<%= jsonWebServiceActionMapping.getPath() %>',
+				formEl,
+				function(obj) {
+
+				_callback(obj);
+				},
+				function(err,obj) {
+
+				_callback(obj,err);
+				}
+				);
+
+				formQueryString = A.IO.prototype._serialize(formEl);
+
+				formQueryString = formQueryString.replace(PLUS_ENCODING, "+");
+				formQueryString = formQueryString.replace(MINUS_ENCODING, "-");
+
+				if (multipart) {
+				formQueryString += Object.keys(tplDataTypes.file).map(
+				function(item, index) {
+				return '&' + item + '=';
+				}
+				).join('');
+				}
+
+				var curlData = [];
+				var scriptData = [];
+
+				var ignoreFields = {
+				formDate: true,
+				p_auth: true
+				};
+
+				formQueryString.replace(
+				REGEX_QUERY_STRING,
+				function(match, key, value) {
+				if (!ignoreFields[key]) {
+				curlData.push(
+				{
+				key: key,
+				value: value
+				}
+				);
+
+				scriptData.push(
+				{
+				key: key,
+				value: value
+				}
+				);
+				}
+				}
+				);
+
+				var tplCurlData = {
+				data: curlData,
+				flag: multipart ? 'F' : 'd'
+				};
+
+				var tplScriptData = {
+				data: scriptData
+				};
+
+				curlTpl.render(tplCurlData, curlExample);
+				scriptTpl.render(tplScriptData, jsExample);
+
+				var urlTplData = {
+				data: [],
+				extraData: []
+				};
+
+				var extraFields = {
+				p_auth: true
+				};
+
+				formQueryString.replace(
+				REGEX_QUERY_STRING,
+				function(match, key, value) {
+				if (!ignoreFields[key]) {
+				if (extraFields[key]) {
+				urlTplData.extraData.push(
+				{
+				key: key,
+				value: value
+				}
+				);
+				}
+				else {
+				urlTplData.data.push(
+				{
+				key: key,
+				value: value
+				}
+				);
+
+				}
+				}
+				}
+				);
+
+				urlTpl.render(urlTplData, urlExample);
+
+				serviceResults.show();
+
+				// save parameters to local storage
+
+				localStorageFallback.setItem(Liferay.LOCAL_STORAGE_ACTION_NAME,
+				JSON.stringify(scriptData));
+				}
+				);
 		</aui:script>
 
 		<textarea class="hide" id="scriptTpl">
