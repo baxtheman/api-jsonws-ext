@@ -10,9 +10,15 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 
 Tested on Liferay 7.1 CE
 
-[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.4/it.baxtheman.liferay.apijsonwsext-7.1.0.4.jar)
+[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.5/it.baxtheman.liferay.apijsonwsext-7.1.0.5.jar)
 
 ![Old to new](/doc/new.gif)
+
+![Old to new](/doc/user.jpg)
+
+![user](/doc/user.jpg)
+![success error](/doc/success-error.jpg)
+![api](/doc/api-sample.jpg)
 
 ## Roadmap
 
