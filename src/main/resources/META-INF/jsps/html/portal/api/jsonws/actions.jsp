@@ -2,6 +2,19 @@
 
 <%@ include file="/html/portal/api/jsonws/init.jsp" %>
 
+<c:if test="<%= !themeDisplay.getPermissionChecker().isSignedIn()  %>">
+	<div class="badge badge-dark">
+	GUEST
+	</div>
+</c:if>
+
+<c:if test="<%= themeDisplay.getPermissionChecker().isSignedIn()  %>">
+	<div class="badge badge-info">
+	<i class="icon-user"></i>&nbsp;
+	<%= themeDisplay.getPermissionChecker().getUser().getScreenName() %>
+	</div>
+</c:if>
+
 <%
 String signature = ParamUtil.getString(request, "signature");
 

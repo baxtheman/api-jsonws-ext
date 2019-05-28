@@ -189,14 +189,21 @@ String signature = ParamUtil.getString(request, "signature");
 				>
 					<liferay-ui:section>
 						<div>
-						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceOutput">
-							<i class="icon-copy"></i>
-						</button>
 						<span class="time-elapsed badge badge-info"></span>
 						<span class="response-size badge badge-info"></span>
 						</div>
 
+						<div class="font-weight-bold">success callback</div>
+						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceOutput">
+							<i class="icon-copy"></i>
+						</button>
 						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceOutput"></pre>
+
+						<div class="font-italic">error callback</div>
+						<button title="copy to clipboard" id="copy-clipboard" class="btn copy-clipboard" data-clipboard-target="#serviceError">
+							<i class="icon-copy"></i>
+						</button>
+						<pre class="prettyprint linenums lang-js lfr-code-block" id="serviceError"></pre>
 					</liferay-ui:section>
 
 					<liferay-ui:section>
@@ -288,6 +295,7 @@ String signature = ParamUtil.getString(request, "signature");
 			var urlExample = A.one('#urlExample');
 
 			var serviceOutput = A.one('#serviceOutput');
+			var serviceError = A.one('#serviceError');
 			var serviceResults = A.one('#serviceResults');
 
 			form.on(
@@ -347,26 +355,40 @@ String signature = ParamUtil.getString(request, "signature");
 					var startTime, endTime;
 					startTime = new Date();
 
+					var _callback = function(obj,err) {
+
+						serviceOutput.text('');
+						serviceError.text('');
+
+					    endTime = new Date();
+					    var timeDiff = endTime - startTime;
+					    var milliseconds = Math.round(timeDiff);
+
+					    var jsontext = JSON.stringify(obj, null, 2);
+					    var jsonsize = jsontext.length;
+
+					    var output = (!err) ? serviceOutput : serviceError;
+
+					    output.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(jsontext)));
+
+						output.removeClass('loading-results');
+
+						location.hash = '#serviceResults';
+
+						A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
+						A.one('span.response-size').text(jsonsize + ' chars lenght');
+					}
+
 					Liferay.Service(
 						'<%= jsonWebServiceActionMapping.getPath() %>',
 						formEl,
 						function(obj) {
 
-						    endTime = new Date();
-						    var timeDiff = endTime - startTime;
-						    var milliseconds = Math.round(timeDiff);
+							_callback(obj);
+						},
+						function(err,obj) {
 
-						    var jsontext = JSON.stringify(obj, null, 2);
-						    var jsonsize = jsontext.length;
-
-							serviceOutput.html(PR.prettyPrintOne(A.Lang.String.escapeHTML(jsontext)));
-
-							output.removeClass('loading-results');
-
-							location.hash = '#serviceResults';
-
-							A.one('span.time-elapsed').text('call time: ' + milliseconds + ' ms');
-							A.one('span.response-size').text(jsonsize + ' chars lenght');
+							_callback(obj,err);
 						}
 					);
 
@@ -478,6 +500,10 @@ Liferay.Service(
 <%= StringPool.FOUR_SPACES %></tpl></tpl>
   },
   </tpl>function(obj) {
+<%= StringPool.FOUR_SPACES %>console.log(obj);
+  },
+  function(err,obj) {
+<%= StringPool.FOUR_SPACES %>/*optional*/
 <%= StringPool.FOUR_SPACES %>console.log(obj);
   }
 );

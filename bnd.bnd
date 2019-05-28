@@ -1,7 +1,7 @@
 Bundle-Name: API JSONWS JSPs Ext
 Bundle-Description: Overrides core/kernel API JSONWS JSPs
 Bundle-SymbolicName: it.baxtheman.liferay.apijsonwsext
-Bundle-Version: 7.1.0.4
+Bundle-Version: 7.1.0.5
 Created-By: Daniele Baggio @baxtheman
 -sources: true
 Web-ContextPath: /api-jsonws-ext
