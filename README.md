@@ -7,6 +7,9 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 * Fast clipboard copy
 * Recall for previous call parameters (using local storage)
 * Print call elapsed time and response chars size
+* View current user (logged or guest)
+* View Liferay.Service results from success or error callback function
+* 'Javascript Example' page with the complete schema
 
 Tested on Liferay 7.1 CE
 
