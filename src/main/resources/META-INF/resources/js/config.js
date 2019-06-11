@@ -1,3 +1,4 @@
+;console.log('api-json-ext by @baxtheman');
 ;
 (function () {
     AUI().applyConfig({

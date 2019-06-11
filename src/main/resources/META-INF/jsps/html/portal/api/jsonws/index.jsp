@@ -35,7 +35,8 @@
 		</div>
 
 		<footer>
-			<liferay-ui:message key="powered-by" /> <a href="https://twitter.com/baxtheman" rel="external">Liferay & @baxtheman (ver 7.1.0.5)</a>
+			<liferay-ui:message key="powered-by" /> <a href="https://twitter.com/baxtheman" rel="external">Liferay & @baxtheman (ver 7.2.0.5)</a>
+			<a href="https://github.com/baxtheman/api-jsonws-ext" rel="external">(source code)</a>
 		</footer>
 	</div>
 </c:if>
