@@ -120,6 +120,7 @@ String signature = ParamUtil.getString(request, "signature");
 					%>
 
 				<aui:input id='<%= "field" + i %>' label="<%= methodParameterName %>" name="<%= methodParameterName %>"
+					type="textarea" rows="1"
 					size="<%= size %>" suffix="<%= methodParameterTypeClassName %>" />
 
 				<%
@@ -167,15 +168,15 @@ String signature = ParamUtil.getString(request, "signature");
 					prevBtn.show();
 					prevBtn.on('click', function() {
 
-					var form = A.one('#execute');
+						var form = A.one('#execute');
 
-					A.Array.forEach(scriptData, function(entry, index) {
+						A.Array.forEach(scriptData, function(entry, index) {
 
-					var input = form.one('input[name=' + entry.key + ']');
-					if (input) {
-					input.val(entry.value);
-					}
-					});
+							var input = form.one('input[name=' + entry.key + ']');
+							if (input) {
+								input.val(unescape(entry.value));
+							}
+						});
 					});
 					}
 
