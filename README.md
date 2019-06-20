@@ -11,9 +11,11 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 * View Liferay.Service results from success or error callback function
 * 'Javascript Example' page with the complete schema
 
-Tested on Liferay 7.1 CE
+Tested on Liferay 7.1.x & 7.2.0 CE
 
-[Download the bundle jar](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.5/it.baxtheman.liferay.apijsonwsext-7.1.0.5.jar)
+[Download the bundle jar for 7.1](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.5/it.baxtheman.liferay.apijsonwsext-7.1.0.5.jar)
+
+[Download the bundle jar for 7.2](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.2.0.5/it.baxtheman.liferay.apijsonwsext-7.2.0.5.jar)
 
 See the old page and the new one:
 
