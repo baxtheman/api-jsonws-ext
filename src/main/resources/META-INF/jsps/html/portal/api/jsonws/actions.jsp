@@ -106,7 +106,7 @@ Set<String> contextNames = JSONWebServiceActionsManagerUtil.getContextNames();
 					String serviceSignature = jsonWebServiceActionMapping.getSignature();
 				%>
 
-					<li class="lfr-api-signature <%= serviceSignature.equals(signature) ? "selected label label-info" : StringPool.BLANK %>">
+					<li class='lfr-api-signature <%= serviceSignature.equals(signature) ? "selected" : StringPool.BLANK %>'>
 
 						<%
 						String methodURL = HttpUtil.addParameter(jsonWSContextPath, "signature", serviceSignature);

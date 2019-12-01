@@ -231,7 +231,7 @@ String signature = ParamUtil.getString(request, "signature");
 			</div>
 		</div>
 
-		<aui:script use="aui-io,aui-template-deprecated,querystring-parse,clipboard,run_prettify,local-storage-fallback">
+		<aui:script use="aui-io,io-form,aui-template-deprecated,querystring-parse,clipboard,run_prettify,local-storage-fallback">
 
 			new ClipboardJS('.copy-clipboard');
 
