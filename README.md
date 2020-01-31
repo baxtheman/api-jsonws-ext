@@ -13,6 +13,8 @@ Are you tired of the old api jsonws page? Take this new one with some extra feat
 
 Tested on Liferay 7.1.x & 7.2.0 CE
 
+[Available in the Liferay marketplace](https://web.liferay.com/it/marketplace/-/mp/application/125100800)
+
 [Download the bundle jar for 7.1](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.1.0.5/it.baxtheman.liferay.apijsonwsext-7.1.0.5.jar)
 
 [Download the bundle jar for 7.2](https://github.com/baxtheman/api-jsonws-ext/releases/download/7.2.0.5/it.baxtheman.liferay.apijsonwsext-7.2.0.5.jar)
